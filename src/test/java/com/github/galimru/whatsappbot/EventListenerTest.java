@@ -26,7 +26,7 @@ public class EventListenerTest {
         whatsappBot.addMessageListener((message, response) -> {
             eventReceived.set(true);
         });
-        whatsappBot.sendMessage(Long.parseLong(Constants.PHONE), "shouldReceiveMessageEvent");
+        whatsappBot.sendMessage(Long.parseLong(Constants.PHONE), "тест");
         await().atMost(60, TimeUnit.SECONDS).untilTrue(eventReceived);
     }
 

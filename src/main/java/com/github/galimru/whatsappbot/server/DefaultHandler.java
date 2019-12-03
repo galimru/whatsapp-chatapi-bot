@@ -24,6 +24,7 @@ public class DefaultHandler implements CallbackHandler {
     @Override
     public void handle(Request request, Response response) throws IOException {
         if (request.getMethod() == Method.POST) {
+            request.setCharacterEncoding("UTF-8");
             String content = CharStreams.toString(request.getReader());
             AbstractEvent event = OBJECT_MAPPER.readValue(content, AbstractEvent.class);
             whatsappBot.handle(event, new GrizzlyServerResponse(response));
