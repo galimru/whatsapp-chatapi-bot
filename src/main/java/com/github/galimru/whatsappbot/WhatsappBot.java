@@ -15,6 +15,7 @@ import com.google.common.net.HttpHeaders;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,11 @@ public class WhatsappBot {
     public WhatsappBot(String baseUrl, String token) {
         this.baseUrl = normalizeUrl(baseUrl);
         this.token = token;
-        this.httpClient = new OkHttpClient();
+        this.httpClient = new OkHttpClient.Builder()
+                .connectTimeout(Duration.ofSeconds(30))
+                .writeTimeout(Duration.ofSeconds(30))
+                .readTimeout(Duration.ofSeconds(30))
+                .build();
         this.callbackServer = new CallbackServer();
     }
 
