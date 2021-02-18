@@ -127,6 +127,15 @@ public class WhatsappBot {
                 message, SendMessageResponse.class);
     }
 
+    public SendMessageResponse sendFile(String chatId, String url, String filename) {
+        SendFile message = new SendFile();
+        message.setChatId(chatId);
+        message.setBody(url);
+        message.setFilename(filename);
+        return executeRequest(Endpoint.SEND_FILE,
+                message, SendMessageResponse.class);
+    }
+
     private String normalizeUrl(String url) {
         if (url.endsWith("/")) {
             url = url.replaceFirst("/$", "");

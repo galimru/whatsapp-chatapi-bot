@@ -2,7 +2,8 @@ package com.github.galimru.whatsappbot.api;
 
 public enum Endpoint {
     WEBHOOK("/webhook"),
-    SEND_MESSAGE("/sendMessage");
+    SEND_MESSAGE("/sendMessage"),
+    SEND_FILE("/sendFile");
 
     private String path;
 
